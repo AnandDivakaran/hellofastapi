@@ -1,0 +1,32 @@
+{
+  "name": "Debian-FastAPI-Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "docker.docker",
+        "ms-azuretools.vscode-docker",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-python-envs",
+        "KevinRose.vsc-python-indent"
+      ]
+    }
+  },
+  "workspaceFolder": "/root/workspace",
+  "workspaceMount": "source=${localEnv:HOME}/workspace/python/fastapi/practice_containerization/src,target=/root/workspace,type=bind",
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,readOnly",
+    "source=${localEnv:HOME}/.ssh/,target=/root/.ssh/,type=bind,consistency=cached"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false
+    }
+  }
+}
